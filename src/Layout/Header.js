@@ -1,37 +1,37 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { BsNewspaper } from 'react-icons/bs'
+import { BsNewspaper } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setSearchTerm } from '../Redux/setSearchTerm';
+
+
 export const Header = () => {
 
-    const searchInputRef = useRef('')
-    const [searchTerm, setSearchTerm] = useState();
+    const searchInputRef = useRef('');
+    const dispatch = useDispatch();
 
-    const handelOnSubmit = (e) => {
+    const handleOnSubmit = (e) => {
         e.preventDefault();
-        const searchTerms = searchInputRef.current.value;
-        setSearchTerm(searchTerms)
-        console.log(searchTerm)
-    }
+        const searchTerm = searchInputRef.current.value;
+        dispatch(setSearchTerm(searchTerm));
+
+    };
+
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand as={Link} to="/" style={{ fontSize: '2rem' }}><BsNewspaper /></Navbar.Brand>
+                <Navbar.Brand as={Link} to="/" style={{ fontSize: '2rem' }}>
+                    <BsNewspaper /> SNews
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
-                    <Nav
-                        className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100px' }}
-                        navbarScroll
-                    >
-                        <Nav.Link as={Link} to="/">Home</Nav.Link>
-
-                    </Nav>
-                    <Form className="d-flex" onSubmit={handelOnSubmit}>
+                    <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll></Nav>
+                    <Form className="d-flex" onSubmit={handleOnSubmit}>
                         <Form.Control
                             type="search"
                             placeholder="Search"
@@ -39,10 +39,12 @@ export const Header = () => {
                             aria-label="Search"
                             ref={searchInputRef}
                         />
-                        <Button variant="outline-success" type='submit'>Search</Button>
+                        <Button variant="outline-dark" type="submit">
+                            Search
+                        </Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
     );
-}
+};

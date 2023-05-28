@@ -1,10 +1,18 @@
 import axios from "axios";
 
-export const getNews = async () => {
+
+export const getNews = async (str) => {
     try {
-        const { data } = await axios.get(`http://api.mediastack.com/v1/news?access_key=6934ce65d20f8357afef7120eae80064&keywords=tennis&limit=1`);
+        const { data } = await axios.get(`https://newsdata.io/api/1/news?apikey=pub_23191190f4f0567d659bec29740c02ea05abb&q=${str}
+        `);
+
         return data;
     } catch (error) {
-        console.log('Error:', error.message);
+        if (error.response) {
+            console.log(error.response.status);
+            console.log(error.response.headers);
+        } else {
+            console.log(error.message);
+        }
     }
-};
+}    

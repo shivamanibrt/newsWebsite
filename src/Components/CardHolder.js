@@ -1,19 +1,24 @@
+import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 
-export const CardHolder = ({ newItem }) => {
+export const CardHolder = ({ newsData }) => {
     return (
         <>
-            <Card className="bg-light text-dark" style={{ minHeight: '300px', minWidth: '500px' }}>
-                <Card.Img src="holder.js/100px270" alt="Card image" />
-                <Card.ImgOverlay>
-                    <Card.Title>{newItem?.articles?.title}</Card.Title>
-                    <Card.Text>
-                        This is a wider card with supporting text below as a natural lead-in
-                        to additional content. This content is a little bit longer.
-                    </Card.Text>
-                    <Card.Text>Last updated 3 mins ago</Card.Text>
-                </Card.ImgOverlay>
+            <Card className="bg-light d-flex flex-column align-items-center" style={{ minHeight: '200px' }}>
+                <Card.Img
+                    src={newsData?.image_url}
+                    alt="Card image"
+                    style={{ maxHeight: '300px' }}
+                />
+                <Card.Body className="d-flex flex-column align-items-center">
+                    <Card.Title>{newsData?.title?.slice(0, 50)}</Card.Title>
+                    <Card.Text>{newsData?.content?.slice(0, 50)}...</Card.Text>
+                    <Card.Text>Type: {newsData?.category}</Card.Text>
+                    <Card.Text className="text-primary">Published date: {newsData?.pubDate}</Card.Text>
+                    <Button variant="primary" href={newsData?.link} target="_blank">Read More</Button>
+                </Card.Body>
             </Card>
+
         </>
     );
 }

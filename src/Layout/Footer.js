@@ -1,23 +1,29 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, NavLink } from 'react-bootstrap';
 
 export const Footer = () => {
     return (
-        <footer className="bg-dark text-light py-5">
+        <footer className="bg-dark text-light py-4">
             <Container>
                 <Row>
                     <Col md={4}>
                         <h4>About Us</h4>
-                        <p>Welcome to our news website, your trusted source for the latest and most reliable news from around the world. We are dedicated to delivering timely and accurate news coverage across various categories including politics, business, technology, and sports.</p>
-                        <p>Our team of experienced journalists and reporters work tirelessly to provide in-depth analysis, investigative reports, and captivating stories that keep you informed and engaged. We strive to deliver news with integrity, impartiality, and respect for diverse perspectives.</p>
+                        <p>
+                            Welcome to our news website, your trusted source for the latest
+                            and most reliable news from around the world. We are dedicated to
+                            delivering timely and accurate news coverage across various
+                            categories including politics, business, technology, and sports.
+                            However only 100 news calls can be made in a day
+                        </p>
+
                     </Col>
                     <Col md={4}>
                         <h4>Categories</h4>
                         <ul className="list-unstyled">
-                            <li>Politics</li>
-                            <li>Business</li>
-                            <li>Technology</li>
-                            <li>Sports</li>
+                            <li><NavLink to="/politics">Politics</NavLink></li>
+                            <li><NavLink to="/business">Business</NavLink></li>
+                            <li><NavLink to="/technology">Technology</NavLink></li>
+                            <li><NavLink to="/sports">Sports</NavLink></li>
                         </ul>
                     </Col>
                     <Col md={4}>
@@ -30,11 +36,16 @@ export const Footer = () => {
                 <hr className="mt-4" />
                 <Row>
                     <Col>
-                        <p className="text-center">&copy; 2023 Your News Website. All rights reserved. | Shivamani</p>
+                        <p className="text-center">
+                            &copy; 2023 Your News Website. All rights reserved. |{'  '}
+                            <a className='text-warning' href="https://shivamanibrt-portfolio.vercel.app/shivamani" target="_blank" rel="noopener noreferrer">
+                                Shivamani
+                            </a>
+                        </p>
+
                     </Col>
                 </Row>
             </Container>
         </footer>
     );
 };
-
