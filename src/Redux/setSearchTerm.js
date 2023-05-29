@@ -8,7 +8,7 @@ export const setSearchTerm = (searchTerm) => {
             const data = await getNews(searchTerm);
 
             // Dispatch an action to update the search term and store the results in Redux
-            dispatch(setReduxNews(data?.results, searchTerm));
+            dispatch(setReduxNews(data?.results));
         } catch (error) {
             console.error(error);
         }

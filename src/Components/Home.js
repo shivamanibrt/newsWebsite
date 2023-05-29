@@ -27,7 +27,7 @@ export const Home = () => {
         <div>
             <Container className="shadow-lg p-4 rounded mt-3">
                 <Row>
-                    <h1 className='text-center '>Highlights of the day</h1>
+                    <h1 className='text-center p-4'>Highlights of the day</h1>
                 </Row>
                 <Row className="mt-2 mb-2">
                     {newsData.slice(0, 2).map((news, index) => (
